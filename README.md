@@ -7,6 +7,8 @@ I used attending the course at the company that I work for, [Improving Ottawa](h
 
 ## Usage
 
+### Running Tests
+
 Unlike in the book, the root module includes the name of the project, followed 
 by `monkey`, which is the name of the language that we are implementing. To run
 tests, we have to include `monkey` before the module under test. For example, 
@@ -18,4 +20,14 @@ go test -v ./monkey/lexer
 --- PASS: TestNextToken (0.00s)
 PASS
 ok  	waiig_vasile/monkey/lexer	0.003s
+```
+
+In order to run all tests, you may just do `go test -v ./...`.
+
+### REPL
+
+Monkey's language "Read Eval Print Loop" (REPL) may be run like such:
+
+```go
+go run monkey/main.go
 ```
