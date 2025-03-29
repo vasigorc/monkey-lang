@@ -24,6 +24,16 @@ ok  	waiig_vasile/monkey/lexer	0.003s
 
 In order to run all tests, you may just do `go test -v ./...`.
 
+Finally, in order to run just one test from a test file, you may use the `-run` flag, followed by the name of the test function. For example, to run the `TestParsePrefixExpression` test from the `parser` package, you would run:
+
+```go
+go test -v ./monkey/parser -run TestParsePrefixExpression
+=== RUN   TestParsePrefixExpression
+--- PASS: TestParsePrefixExpression (0.00s)
+PASS
+ok  	waiig_vasile/monkey/parser	0.003s
+```
+
 ### REPL
 
 Monkey's language "Read Eval Print Loop" (REPL) may be run like such:
