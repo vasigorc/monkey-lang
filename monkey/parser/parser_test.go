@@ -36,6 +36,8 @@ func TestLetStatements(t *testing.T) {
 			return
 		}
 
+		fmt.Printf("stmt is %s\n", stmt.String())
+
 		val := stmt.(*ast.LetStatement).Value
 		if !testLiteralExpression(t, val, tt.expectedValue) {
 			return
