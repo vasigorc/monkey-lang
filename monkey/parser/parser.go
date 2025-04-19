@@ -296,7 +296,6 @@ func (p *Parser) curPrecedence() int {
 	return LOWEST
 }
 
-// TODO Ask Andrew whether he commented the `defer` thing too
 func (p *Parser) parseInfixExpression(left ast.Expression) ast.Expression {
 	// defer untrace(trace("parseInfixExpression"))
 

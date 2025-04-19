@@ -285,7 +285,7 @@ func TestFunctionApplication(t *testing.T) {
 		{"let identity = fn(x) { return x; }; identity(5);", 5},
 		{"let double = fn(x) { x * 2; }; double(5);", 10},
 		{"let add = fn(x, y) { x + y; }; add(5, 5);", 10},
-		{"let add = fn(x, y) { x + y; }; add(5 + 5, add(5, 5);", 20},
+		{"let add = fn(x, y) { x + y; }; add(5 + 5, add(5, 5));", 20},
 	}
 
 	for _, tt := range tests {
