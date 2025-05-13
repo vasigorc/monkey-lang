@@ -1,9 +1,14 @@
-# Writing an Interpreter in Go
+# Monkey language
 
-This repository walks as my walkthrough the [book](https://www.amazon.ca/dp/3982016118) with the same title, which
-I used attending the course at the company that I work for, [Improving Ottawa](https://www.improving.com/locations/ottawa/?region=ca).
+This repository serves as my walkthrough of two books by Thornsten Ball:
 
-[![Book Cover](images/book-cover.jpg)](https://interpreterbook.com/)
+- [Writing an Interpreter in Go](https://www.amazon.ca/dp/3982016118), and
+- [Writing a Compiler in Go](https://www.amazon.ca/Writing-Compiler-Go-Thorsten-Ball/dp/398201610X)
+
+I used them attending a corresponding course at the company that I work for, [Improving Ottawa](https://www.improving.com/locations/ottawa/?region=ca).
+
+[![Book Cover 1](images/book-cover.jpg)](https://interpreterbook.com/)
+![Book Cover 2](images/book-cover-2.jpg)
 
 ## Usage
 
