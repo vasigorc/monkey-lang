@@ -4,10 +4,10 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"waiig_vasile/monkey/evaluator"
-	"waiig_vasile/monkey/lexer"
-	"waiig_vasile/monkey/object"
-	"waiig_vasile/monkey/parser"
+	"monkey-lang/evaluator"
+	"monkey-lang/lexer"
+	"monkey-lang/object"
+	"monkey-lang/parser"
 )
 
 const PROMPT = ">> "

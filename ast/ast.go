@@ -3,7 +3,7 @@ package ast
 import (
 	"bytes"
 	"strings"
-	"waiig_vasile/monkey/token"
+	"monkey-lang/token"
 )
 
 type Node interface {

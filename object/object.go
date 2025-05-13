@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"hash/fnv"
 	"strings"
-	"waiig_vasile/monkey/ast"
+	"monkey-lang/ast"
 )
 
 type ObjectType string

@@ -2,9 +2,9 @@ package evaluator
 
 import (
 	"testing"
-	"waiig_vasile/monkey/lexer"
-	"waiig_vasile/monkey/object"
-	"waiig_vasile/monkey/parser"
+	"monkey-lang/lexer"
+	"monkey-lang/object"
+	"monkey-lang/parser"
 )
 
 func TestEvalIntegerExpression(t *testing.T) {

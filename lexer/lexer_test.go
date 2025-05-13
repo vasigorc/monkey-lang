@@ -2,7 +2,7 @@ package lexer
 
 import (
 	"testing"
-	"waiig_vasile/monkey/token"
+	"monkey-lang/token"
 )
 
 func TestNextToken(t *testing.T) {

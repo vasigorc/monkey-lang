@@ -1,3 +1,3 @@
-module waiig_vasile
+module monkey-lang
 
 go 1.24.1

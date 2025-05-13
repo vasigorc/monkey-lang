@@ -3,9 +3,9 @@ package parser
 import (
 	"fmt"
 	"strconv"
-	"waiig_vasile/monkey/ast"
-	"waiig_vasile/monkey/lexer"
-	"waiig_vasile/monkey/token"
+	"monkey-lang/ast"
+	"monkey-lang/lexer"
+	"monkey-lang/token"
 )
 
 type (

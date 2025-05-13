@@ -2,7 +2,7 @@ package ast
 
 import (
 	"testing"
-	"waiig_vasile/monkey/token"
+	"monkey-lang/token"
 )
 
 func TestString(t *testing.T) {
