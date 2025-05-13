@@ -43,3 +43,13 @@ Monkey's language "Read Eval Print Loop" (REPL) may be run like such:
 ```go
 go run main.go
 ```
+
+## Development
+
+### Code formatting
+
+To format all files issue this command from repository root:
+
+```bash
+gofmt -w
+```
