@@ -22,7 +22,6 @@ func TestIntegerArithmetic(t *testing.T) {
 			input:             "1 + 2",
 			expectedConstants: []interface{}{1, 2},
 			expectedInstructions: []code.Instructions{
-				// TODO: Ask Andrew why the operands are 0 and 1, instead of 1 and 2
 				code.Make(code.OpConstant, 0),
 				code.Make(code.OpConstant, 1),
 			},
@@ -32,7 +31,7 @@ func TestIntegerArithmetic(t *testing.T) {
 	runCompilerTests(t, tests)
 }
 
-func runCompilerTests(t testing.T, tests []compilerTestCase) {
+func runCompilerTests(t *testing.T, tests []compilerTestCase) {
 	t.Helper()
 
 	for _, tt := range tests {
@@ -58,7 +57,7 @@ func runCompilerTests(t testing.T, tests []compilerTestCase) {
 	}
 }
 
-func testConstants(t testing.T, expected []any, actual []object.Object) error {
+func testConstants(t *testing.T, expected []any, actual []object.Object) error {
 	if len(expected) != len(actual) {
 		return fmt.Errorf("wrong number of constants, got=%d, want=%d", len(actual), len(expected))
 	}
