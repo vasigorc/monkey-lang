@@ -47,13 +47,13 @@ func (vm *VM) Run() error {
 			if err != nil {
 				return err
 			}
+		case code.OpPop:
+			vm.pop()
 		case code.OpAdd, code.OpSub, code.OpMul, code.OpDiv:
 			err := vm.executeBinaryOperation(op)
 			if err != nil {
 				return err
 			}
-		case code.OpPop:
-			vm.pop()
 		case code.OpTrue:
 			err := vm.push(True)
 			if err != nil {
@@ -89,7 +89,7 @@ func (vm *VM) executeComparison(op code.Opcode) error {
 	case code.OpNotEqual:
 		return vm.push(nativeBoolToBooleanObject(right != left))
 	default:
-		return fmt.Errorf("unknown operator: %d (%s %s", op, left.Type(), right.Type())
+		return fmt.Errorf("unknown operator: %d (%s %s)", op, left.Type(), right.Type())
 	}
 }
 
@@ -103,7 +103,7 @@ func (vm *VM) executeIntegerComparison(op code.Opcode, left, right object.Object
 	case code.OpNotEqual:
 		return vm.push(nativeBoolToBooleanObject(rightValue != leftValue))
 	case code.OpGreaterThan:
-		return vm.push(nativeBoolToBooleanObject(rightValue > leftValue))
+		return vm.push(nativeBoolToBooleanObject(leftValue > rightValue))
 	default:
 		return fmt.Errorf("unknown operator: %d", op)
 	}
