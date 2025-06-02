@@ -227,3 +227,4 @@ func (vm *VM) LastPoppedStackElem() object.Object {
 
 var True = &object.Boolean{Value: true}
 var False = &object.Boolean{Value: false}
+var Null = &object.Null{}
