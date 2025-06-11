@@ -125,6 +125,20 @@ func (vm *VM) Run() error {
 			if err != nil {
 				return err
 			}
+		case code.OpHash:
+			numElements := int(code.ReadUint16(vm.instructions[ip+1:]))
+			ip += 2
+
+			startIndex := vm.sp - numElements
+			hash, err := vm.buildHash(startIndex)
+			if err != nil {
+				return err
+			}
+			vm.sp = startIndex
+			err = vm.push(hash)
+			if err != nil {
+				return err
+			}
 		}
 	}
 
