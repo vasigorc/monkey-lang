@@ -343,3 +343,24 @@ func TestFunctionsWithReturnStatements(t *testing.T) {
 
 	runVmTests(t, tests)
 }
+func TestFunctionsWithoutReturnValue(t *testing.T) {
+	tests := []vmTestCase{
+		{
+			input: `
+			let noReturn = fn() { };
+			noReturn();
+			`,
+			expexted: Null,
+		},
+		{
+			input: `
+			let noReturn = fn() { };
+			let noReturnTwo = fn() { noReturn(); };
+			noReturn();
+			noReturnTwo();
+			`,
+			expexted: Null,
+		},
+	}
+	runVmTests(t, tests)
+}
