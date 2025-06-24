@@ -31,7 +31,7 @@ func testIntegerObject(expected int64, actual object.Object) error {
 
 type vmTestCase struct {
 	input    string
-	expexted any
+	expected any
 }
 
 func runVmTests(t *testing.T, tests []vmTestCase) {
@@ -54,7 +54,7 @@ func runVmTests(t *testing.T, tests []vmTestCase) {
 
 		stackElem := vm.LastPoppedStackElem()
 
-		testExpectedObject(t, tt.expexted, stackElem)
+		testExpectedObject(t, tt.expected, stackElem)
 	}
 }
 
@@ -301,7 +301,7 @@ func TestCallingFunctionsWithoutArguments(t *testing.T) {
 			let fivePlusTen = fn() { 5 + 10; };
 			fivePlusTen();
 			`,
-			expexted: 15,
+			expected: 15,
 		},
 		{
 			input: `
@@ -309,7 +309,7 @@ func TestCallingFunctionsWithoutArguments(t *testing.T) {
 			let two = fn() { 2; };
 			one() + two()
 			`,
-			expexted: 3,
+			expected: 3,
 		},
 		{
 			input: `
@@ -317,7 +317,7 @@ func TestCallingFunctionsWithoutArguments(t *testing.T) {
 			let b = fn() { a() + 1 };
 			let c = fn() { b() + 1 };
 			c()`,
-			expexted: 3,
+			expected: 3,
 		},
 	}
 
@@ -330,14 +330,14 @@ func TestFunctionsWithReturnStatements(t *testing.T) {
 			let earlyExit = fn() { return 99; 100 };
 			earlyExit();
 			`,
-			expexted: 99,
+			expected: 99,
 		},
 		{
 			input: `
 			let earlyExit = fn() { return 99; return 100; };
 			earlyExit();
 			`,
-			expexted: 99,
+			expected: 99,
 		},
 	}
 
@@ -350,7 +350,7 @@ func TestFunctionsWithoutReturnValue(t *testing.T) {
 			let noReturn = fn() { };
 			noReturn();
 			`,
-			expexted: Null,
+			expected: Null,
 		},
 		{
 			input: `
@@ -359,7 +359,7 @@ func TestFunctionsWithoutReturnValue(t *testing.T) {
 			noReturn();
 			noReturnTwo();
 			`,
-			expexted: Null,
+			expected: Null,
 		},
 	}
 	runVmTests(t, tests)
@@ -373,7 +373,69 @@ func TestFirstClassFunctions(t *testing.T) {
 			let returnsOneReturner = fn() { returnsOne; };
 			returnsOneReturner()();
 			`,
-			expexted: 1,
+			expected: 1,
+		},
+		{
+			input: `
+			let returnsOneReturner = fn() {
+				let returnsOne = fn() { 1; };
+				returnsOne;
+			};
+			returnsOneReturner()();
+			`,
+			expected: 1,
+		},
+	}
+
+	runVmTests(t, tests)
+}
+
+func TestCallingFunctionsWithBindings(t *testing.T) {
+	tests := []vmTestCase{
+		{
+			input: `
+			let one = fn() { let one = 1; one };
+			one();
+			`,
+			expected: 1,
+		},
+		{
+			input: `
+			let oneAndTwo = fn() { let one = 1; let two = 2; one + two; };
+			oneAndTwo();
+			`,
+			expected: 3,
+		},
+		{
+			input: `
+			let oneAndTwo = fn() { let one = 1; let two = 2; one + two; };
+			let threeAndFour = fn() { let three = 3; let four = 4; three + four; };
+			oneAndTwo() + threeAndFour();
+			`,
+			expected: 10,
+		},
+		{
+			input: `
+			let firstFoobar = fn() { let foobar = 50; foobar; };
+			let secondFoobar = fn() { let foobar = 100; foobar; };
+			firstFoobar() + secondFoobar();
+			`,
+			expected: 150,
+		},
+		{
+			input: `
+			let globalSeed = 50;
+			let minusOne = fn() {
+				let num = 1;
+				globalSeed - num;
+			}
+			let minusTwo = fn() {
+				let num = 2;
+				globalSeed - num;
+			}
+			minusOne() + minusTwo();
+			`,
+			expected: 97,
 		},
 	}
 
