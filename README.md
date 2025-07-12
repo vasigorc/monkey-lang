@@ -44,6 +44,18 @@ Monkey's language "Read Eval Print Loop" (REPL) may be run like such:
 go run main.go
 ```
 
+### Benchmark
+
+You may wish to compare the execution duration of the VM (executing compiled bytecode) vs. the runtime interpreter like so:
+
+```go
+vasilegorcinschi@bonobo15  ~/repos/monkey-lang   main ±  go build -o fibonacci ./benchmark
+ vasilegorcinschi@bonobo15  ~/repos/monkey-lang   main  ./fibonacci -engine=eval
+engine=eval, result=9227465, duration=13.61010565s
+ vasilegorcinschi@bonobo15  ~/repos/monkey-lang   main  ./fibonacci -engine=vm
+engine=vm, result=9227465, duration=2.842888825s
+```
+
 ## Development
 
 ### Code formatting
